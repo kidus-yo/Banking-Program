@@ -53,8 +53,9 @@ def main():
         elif choice == 4:
             running = False
         else:
-            print("Please Enter only a valid number!")
-main()
+          print("Please Enter only a valid number!")
+if __name__ == "__main__":            
+    main()
 print("-" * 30)
 print("Thank you for working with us!🌼")
 print("-" * 30)
