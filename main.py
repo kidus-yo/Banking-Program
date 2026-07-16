@@ -1,7 +1,7 @@
 #Banking Program
 
-def check_balance():
-    print(f"Your balance is: {balance:.2f}")
+def check_balance(balance):
+    print(f"Your balance is: ${balance:.2f}")
 
 def deposit():
     amount = float(input("Enter amount: "))
@@ -12,30 +12,39 @@ def deposit():
     else:
         return amount
 
-def withdraw():
-    pass
-
-
-balance = 0
-running = True
-
-while running:
-    print("1. Check Balance")
-    print("2. Deposit money")
-    print("3. Withdraw money")
-    print("4. Exit")
-
-    choice = int(input("Please Enter your choice?(1-4): "))
-
-    if choice == 1:
-        check_balance()
-    elif choice == 2:
-        amount+=deposit()
-    elif choice == 3:
-        withdraw()
-    elif choice == 4:
-        running = False
+def withdraw(balance):
+    money = float(input("Enter amount: "))
+    if money > balance:
+        print("Insufficient funds!")
+        return 0
+    elif money < 0:
+        print("amount cant be negative.")
+        return 0
     else:
-        print("Please Enter only a valid number!")
+        return money
+    
+def main():
+    balance = 0
+    running = True
+    while running:
+        print("1. Check Balance")
+        print("2. Deposit money")
+        print("3. Withdraw money")
+        print("4. Exit")
 
-     
+        choice = int(input("Please Enter your choice?(1-4): "))
+
+        if choice == 1:
+            check_balance(balance)
+        elif choice == 2:
+            balance+=deposit()
+            print("Deposit Successful!✅")
+        elif choice == 3:
+            balance-=withdraw(balance)
+            print("Withdrawn sucessful!✅")
+        elif choice == 4:
+            running = False
+        else:
+            print("Please Enter only a valid number!")
+main()
+print("Thank you for working with us!🌼")
